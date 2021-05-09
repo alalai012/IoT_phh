@@ -91,7 +91,7 @@
             android:textAllCaps="false"></Button>
 
         <Button
-            android:id="@+id/state1"
+            android:id="@+id/btn_Medication"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_margin="6dp"
