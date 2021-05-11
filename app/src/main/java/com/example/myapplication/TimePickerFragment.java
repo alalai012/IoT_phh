@@ -14,7 +14,7 @@ import java.util.Calendar;
 public class TimePickerFragment extends DialogFragment {
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {//시간 입력 받아 TimePickerDialog
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);

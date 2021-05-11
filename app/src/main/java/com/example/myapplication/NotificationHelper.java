@@ -17,6 +17,7 @@ public class NotificationHelper extends ContextWrapper {
     public static final String channel2Name = "channel 2 ";
 
     private NotificationManager mManager;
+    private NotificationManager lManager;
 
     public NotificationHelper(Context base) {
         super(base);
@@ -41,7 +42,7 @@ public class NotificationHelper extends ContextWrapper {
         channel2.setLightColor(R.color.black);
         channel2.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
-        getManager().createNotificationChannel(channel2);
+        getlManager().createNotificationChannel(channel2);
 
     }
 
@@ -52,7 +53,13 @@ public class NotificationHelper extends ContextWrapper {
 
         return mManager;
     }
+    public NotificationManager getlManager() {
+        if (lManager == null){
+            lManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        }
 
+        return lManager;
+    }
     public NotificationCompat.Builder getChannel1Notification(String title, String message){
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
                 .setContentTitle(title)
@@ -62,13 +69,19 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannel2Notification(String title, String message){
         return new NotificationCompat.Builder(getApplicationContext(), channel2ID)
-                .setContentTitle(title)
+                .setContentTitle("채널 2 노티")
                 .setContentText(message)
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 
-    public NotificationCompat.Builder getChannelNotification(){
+    public NotificationCompat.Builder getChannelNotification(int id){
+
+        String string ="아침 약을 드세요";
+        if(id==1){}//채널을 어떻게 나눠서 불러올까???
+        if(id==2){string ="점심 약을 드세요";}else{string = "저녁 약을 드세요. id:"+id;}
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.ic_launcher_background)
+            .setContentTitle(string);
     }
+
 }
