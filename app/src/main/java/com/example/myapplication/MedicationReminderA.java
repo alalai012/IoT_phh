@@ -1,25 +1,14 @@
 package com.example.myapplication;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-
-public class MedicationReminderA extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
+public class MedicationReminderA extends AppCompatActivity {
 private TextView mTextView;
 int i = 1;
 
@@ -34,8 +23,8 @@ protected void onCreate(Bundle savedInstanceState) {
         button.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v){
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getSupportFragmentManager(), "time picker");
+                DialogFragment timePicker = new TimePickerF_a();
+                timePicker.show(getSupportFragmentManager(), "time picker_1");
                 }
 
                 });
@@ -44,29 +33,24 @@ protected void onCreate(Bundle savedInstanceState) {
                 buttonCancelAlarm.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick (View v) {
-                cancelAlarm();
+               // cancelAlarm();
                 }
                 });
         }
 
-@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-@Override
-public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, hourOfDay);//Timepicker에서 선택한 시간을 저장하는 변수
-        c.set(Calendar.MINUTE, minute);
-        c.set(Calendar.SECOND, 0);
-
-        updateTimeText(c);
-        startAlarm(c);//here
-        }
-
+/*
 private void updateTimeText(Calendar c){
         //String timeText = "Alarm set for : ";
         String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime()); //DateFormat.SHORT 03:33PM 형식
 
         mTextView.setText(timeText);
         }
+private void updateTimeText2(Calendar c){
+        //String timeText = "Alarm set for : ";
+        String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime()); //DateFormat.SHORT 03:33PM 형식
+
+        mTextView.setText(timeText);
+}
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 private void startAlarm(Calendar c){
@@ -91,6 +75,6 @@ private void cancelAlarm(){
 
         alarmManager.cancel(pendingIntent);
         mTextView.setText("Alarm canceled");
-        }
+        }*/
 
         }

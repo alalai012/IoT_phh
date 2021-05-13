@@ -9,7 +9,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-//출처 : https://appdpmtstore.tistory.com/4
+
 public class NotificationHelper extends ContextWrapper {
     public static final String channel1ID = "channel1ID";
     public static final String channel1Name = "channel 1 ";
@@ -17,7 +17,6 @@ public class NotificationHelper extends ContextWrapper {
     public static final String channel2Name = "channel 2 ";
 
     private NotificationManager mManager;
-    private NotificationManager lManager;
 
     public NotificationHelper(Context base) {
         super(base);
@@ -28,7 +27,10 @@ public class NotificationHelper extends ContextWrapper {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannels(){
-        NotificationChannel channel1 = new NotificationChannel(channel1ID,channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel1 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            channel1 = new NotificationChannel(channel1ID,channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
+        }
         channel1.enableLights(true);
         channel1.enableVibration(true);
         channel1.setLightColor(R.color.black);
@@ -36,13 +38,16 @@ public class NotificationHelper extends ContextWrapper {
 
         getManager().createNotificationChannel(channel1);
 
-        NotificationChannel channel2 = new NotificationChannel(channel2ID,channel2Name, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel2 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            channel2 = new NotificationChannel(channel2ID,channel2Name, NotificationManager.IMPORTANCE_DEFAULT);
+        }
         channel2.enableLights(true);
         channel2.enableVibration(true);
-        channel2.setLightColor(R.color.black);
+        channel2.setLightColor(R.color.design_default_color_background);
         channel2.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
-        getlManager().createNotificationChannel(channel2);
+        getManager().createNotificationChannel(channel2);
 
     }
 
@@ -53,13 +58,7 @@ public class NotificationHelper extends ContextWrapper {
 
         return mManager;
     }
-    public NotificationManager getlManager() {
-        if (lManager == null){
-            lManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        }
 
-        return lManager;
-    }
     public NotificationCompat.Builder getChannel1Notification(String title, String message){
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
                 .setContentTitle(title)
@@ -69,19 +68,13 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannel2Notification(String title, String message){
         return new NotificationCompat.Builder(getApplicationContext(), channel2ID)
-                .setContentTitle("채널 2 노티")
+                .setContentTitle(title)
                 .setContentText(message)
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 
-    public NotificationCompat.Builder getChannelNotification(int id){
-
-        String string ="아침 약을 드세요";
-        if(id==1){}//채널을 어떻게 나눠서 불러올까???
-        if(id==2){string ="점심 약을 드세요";}else{string = "저녁 약을 드세요. id:"+id;}
+    public NotificationCompat.Builder getChannelNotification(){
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle(string);
+                .setSmallIcon(R.drawable.ic_launcher_background);
     }
-
 }

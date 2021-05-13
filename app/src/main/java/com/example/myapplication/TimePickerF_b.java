@@ -11,10 +11,10 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class TimePickerFragment extends DialogFragment {
+public class TimePickerF_b extends DialogFragment {
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {//시간 입력 받아 TimePickerDialog
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {//점심시간 입력 받아 TimePickerDialog
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
