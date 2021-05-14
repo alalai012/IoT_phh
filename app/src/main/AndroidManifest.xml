@@ -14,11 +14,12 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.example.notification.AlertReceiver"/><!--추가함-->
+        <receiver android:name=".AlertReceiver_a"/>
+        <receiver android:name=".AlertReceiver_b"/>
+        <receiver android:name=".AlertReceiver_c"/><!--추가함-->
     </application>
 
 </manifest>

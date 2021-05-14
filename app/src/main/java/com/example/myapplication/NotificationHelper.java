@@ -27,24 +27,18 @@ public class NotificationHelper extends ContextWrapper {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannels(){
-        NotificationChannel channel1 = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            channel1 = new NotificationChannel(channel1ID,channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
-        }
+        NotificationChannel channel1 = new NotificationChannel(channel1ID,channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
         channel1.enableLights(true);
         channel1.enableVibration(true);
-        channel1.setLightColor(R.color.black);
+        channel1.setLightColor(R.color.black);//colorPrimary
         channel1.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
         getManager().createNotificationChannel(channel1);
 
-        NotificationChannel channel2 = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            channel2 = new NotificationChannel(channel2ID,channel2Name, NotificationManager.IMPORTANCE_DEFAULT);
-        }
+        NotificationChannel channel2 = new NotificationChannel(channel2ID,channel2Name, NotificationManager.IMPORTANCE_DEFAULT);
         channel2.enableLights(true);
         channel2.enableVibration(true);
-        channel2.setLightColor(R.color.design_default_color_background);
+        channel2.setLightColor(R.color.black);//colorPrimary
         channel2.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
         getManager().createNotificationChannel(channel2);
@@ -63,18 +57,24 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.ic_launcher_background);//ic_one
     }
 
     public NotificationCompat.Builder getChannel2Notification(String title, String message){
         return new NotificationCompat.Builder(getApplicationContext(), channel2ID)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.ic_launcher_background);//ic_two
     }
 
-    public NotificationCompat.Builder getChannelNotification(){
+
+    public NotificationCompat.Builder getChannelNotification(int id){
+        String text ="";
+        if (id == 1){text = "아침 약 알림입니다.";}
+        else if(id == 2){text ="점심 약 알림입니다.";}
+        else if (id ==3) {text = "저녁 약 알림입니다.";}
+        else{text = "id 값 오류";}
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.ic_launcher_background).setContentText(text);
     }
 }

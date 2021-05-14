@@ -11,8 +11,9 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="알람이 설정되지 않았습니다."
+        android:text="약 복용 알림"
         android:textSize="30sp"
+        android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="31dp"
         />
@@ -26,22 +27,10 @@
         android:layout_height="wrap_content"
         android:gravity="center">
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/morningtime"
             android:layout_height="wrap_content" android:layout_width="wrap_content"
             android:textSize="30sp"
-            android:text="00"
-            android:layout_margin="8dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text=":">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content" android:layout_width="wrap_content"
-            android:textSize="30sp"
-            android:text="00"
+            android:text="알람이 설정되지 않았습니다."
             android:layout_margin="8dp"
             />
         <Button
@@ -64,21 +53,10 @@
         android:layout_height="wrap_content"
         android:gravity="center">
         <TextView
+            android:id="@+id/lunchtime"
             android:layout_height="wrap_content" android:layout_width="wrap_content"
             android:textSize="30sp"
-            android:text="00"
-            android:layout_margin="8dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text=":">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content" android:layout_width="wrap_content"
-            android:textSize="30sp"
-            android:text="00"
+            android:text="알람이 설정되지 않았습니다."
             android:layout_margin="8dp"
             />
         <Button
@@ -102,21 +80,10 @@
         android:layout_height="wrap_content"
         android:gravity="center">
         <TextView
+            android:id="@+id/dinertime"
             android:layout_height="wrap_content" android:layout_width="wrap_content"
             android:textSize="30sp"
-            android:text="00"
-            android:layout_margin="8dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text=":">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content" android:layout_width="wrap_content"
-            android:textSize="30sp"
-            android:text="00"
+            android:text="알람이 설정되지 않았습니다."
             android:layout_margin="8dp"
             />
         <Button
